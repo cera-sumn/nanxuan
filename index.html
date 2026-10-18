@@ -11,7 +11,6 @@
   .hidden{display:none !important;}
   button{font-family:inherit;cursor:pointer;}
   input,textarea{font-family:inherit;}
-
   #authPage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 15% 15%,#e2d8ff 0%,transparent 55%),radial-gradient(circle at 85% 85%,#ffdce9 0%,transparent 55%),radial-gradient(circle at 80% 10%,#d8f0ff 0%,transparent 50%),#f7f5ff;}
   .auth-card{width:100%;max-width:390px;background:rgba(255,255,255,.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.9);border-radius:24px;padding:34px 28px 26px;box-shadow:0 20px 50px -18px rgba(94,63,224,.35);}
   .brand{text-align:center;margin-bottom:22px;}
@@ -28,11 +27,10 @@
   .btn-main{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,#8a6bff,#6c47ff);color:#fff;font-size:15px;font-weight:700;letter-spacing:1px;margin-top:6px;box-shadow:0 10px 22px -10px rgba(108,71,255,.9);transition:.2s;}
   .btn-main:hover{transform:translateY(-1px);}
   .btn-main:active{transform:scale(.985);}
-  .msg{font-size:12.5px;text-align:center;margin-top:12px;min-height:18px;color:#ff4d6d;font-weight:600;}
+  .msg{font-size:12.5px;text-align:center;margin-top:12px;min-height:18px;color:#ff4d6d;font-weight:600;word-break:break-all;}
   .msg.ok{color:#12b76a;}
   .hint{font-size:11.5px;color:#a9a4bb;text-align:center;margin-top:16px;line-height:1.6;}
   .config-warn{font-size:12.5px;color:#b26a00;background:#fff7e6;border:1px solid #ffe1a8;border-radius:10px;padding:10px 12px;margin-bottom:14px;line-height:1.6;}
-
   header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
   .header-inner{max-width:660px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;gap:10px;}
   .header-logo{width:34px;height:34px;flex:0 0 auto;border-radius:11px;background:linear-gradient(140deg,#8f6dff,#c86bff 60%,#ff6ba6);display:flex;align-items:center;justify-content:center;font-size:17px;}
@@ -44,7 +42,6 @@
   .logout-btn:hover{color:#ff4d6d;border-color:#ffd0da;background:#fff5f7;}
   .refresh-btn{border:1px solid var(--border);background:#fff;color:var(--muted);font-size:12px;padding:5px 11px;border-radius:999px;transition:.2s;}
   .refresh-btn:hover{color:var(--primary);border-color:#ddd4ff;background:#f7f5ff;}
-
   main{max-width:660px;margin:0 auto;padding:16px 14px 60px;}
   .composer{background:var(--card);border-radius:18px;padding:15px;box-shadow:0 6px 24px -14px rgba(60,40,140,.28);border:1px solid var(--border);margin-bottom:16px;}
   .composer-top{display:flex;gap:11px;}
@@ -65,7 +62,6 @@
   .publish{border:none;border-radius:11px;padding:9px 22px;font-size:14px;font-weight:700;color:#fff;background:linear-gradient(135deg,#8a6bff,#6c47ff);box-shadow:0 8px 18px -9px rgba(108,71,255,.95);transition:.2s;}
   .publish:disabled{opacity:.4;box-shadow:none;cursor:not-allowed;}
   .publish:not(:disabled):hover{transform:translateY(-1px);}
-
   .post{background:var(--card);border-radius:18px;padding:15px;border:1px solid var(--border);box-shadow:0 5px 20px -16px rgba(60,40,140,.5);margin-bottom:14px;animation:pop .3s ease;}
   @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   .post-head{display:flex;align-items:center;gap:10px;}
@@ -99,32 +95,21 @@
   .loading{text-align:center;padding:40px;color:var(--muted);font-size:14px;}
   .toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:rgba(35,32,46,.92);color:#fff;font-size:13px;padding:10px 18px;border-radius:999px;z-index:999;opacity:0;transition:.25s;pointer-events:none;max-width:80%;text-align:center;}
   .toast.show{opacity:1;}
-
-  @media (max-width:480px){
-    .app-title .full{display:none;}
-    .app-title .short{display:inline;}
-    .user-name{display:none;}
-    .brand h1{font-size:18px;}
-  }
+  @media (max-width:480px){.app-title .full{display:none;}.app-title .short{display:inline;}.user-name{display:none;}.brand h1{font-size:18px;}}
 </style>
 </head>
 <body>
 
-<!-- 配置提示 -->
 <div id="configPage" class="hidden" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">
   <div class="auth-card">
     <div class="brand"><div class="logo">⚙️</div><h1>还差一步配置</h1></div>
     <p style="font-size:13.5px;line-height:1.8;color:#4a4558;">
-      这个云端版需要你先把 Supabase 的 <b>Project URL</b> 和 <b>anon key</b> 填到代码里。<br><br>
-      打开 HTML 文件，找到脚本开头的这两行，把引号里的内容换成你自己的：
+      请打开 HTML 文件，找到脚本开头的 <b>SUPABASE_URL</b> 和 <b>SUPABASE_ANON_KEY</b>，把引号里的内容换成你自己的。
     </p>
-    <pre style="background:#f4f2fb;border-radius:10px;padding:12px;font-size:12px;overflow:auto;margin-top:12px;color:#5f3fe0;">const SUPABASE_URL = '你的URL';
-const SUPABASE_ANON_KEY = '你的KEY';</pre>
-    <p style="font-size:12px;color:#8b8798;margin-top:12px;">具体注册和建表步骤见我给你发的说明。</p>
+    <p style="font-size:12px;color:#8b8798;margin-top:12px;">注意：URL 千万不要带结尾的斜杠和 /rest/v1</p>
   </div>
 </div>
 
-<!-- 登录页 -->
 <div id="authPage" class="hidden">
   <div class="auth-card">
     <div class="brand">
@@ -146,7 +131,6 @@ const SUPABASE_ANON_KEY = '你的KEY';</pre>
   </div>
 </div>
 
-<!-- 主应用 -->
 <div id="appPage" class="hidden">
   <header>
     <div class="header-inner">
@@ -196,10 +180,10 @@ const SUPABASE_ANON_KEY = '你的KEY';</pre>
 
 <script>
 /* =========================================================
-   1. 配置：把下面两个值换成你自己的 Supabase 信息
+   1. 配置（请确保不要带有 /rest/v1 或末尾斜杠）
    ========================================================= */
-const SUPABASE_URL = 'https://hvngtgxcjrzyvixhncsv.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_NLUye759i7wyOStVy0IR9A_DrMhfSjR';
+const SUPABASE_URL = 'https://hvngtxcjrzyvixhncsv.supabase.co'; // 注意：请核对你的ID
+const SUPABASE_ANON_KEY = '你的KEY'; // 注意：替换成 sb_publishable_ 开头的那个
 
 /* =========================================================
    2. 基础工具
@@ -224,7 +208,7 @@ function toast(msg){
   el.textContent = msg;
   el.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
 }
 
 /* =========================================================
@@ -238,40 +222,40 @@ const api = {
       'Content-Type': 'application/json'
     }, extra || {});
   },
-  async get(path){
-    const r = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, { headers: this.headers() });
-    const text = await r.text();
-    if(!r.ok) throw new Error(text || ('GET 失败 ' + r.status));
-    return text ? JSON.parse(text) : [];
+  async request(method, path, body){
+    // 这里会自动拼上 /rest/v1/
+    const url = `${SUPABASE_URL}/rest/v1/${path}`;
+    const opt = { method, headers: this.headers() };
+    if(body) {
+      opt.body = JSON.stringify(body);
+      opt.headers['Prefer'] = 'return=representation';
+    }
+    
+    try {
+      const r = await fetch(url, opt);
+      const text = await r.text();
+      
+      if(!r.ok) {
+        let errMsg = text;
+        try {
+          const parsed = JSON.parse(text);
+          if (parsed.message) errMsg = parsed.message;
+          if (parsed.hint) errMsg += ' - ' + parsed.hint;
+        } catch(e) {}
+        throw new Error(errMsg || `请求失败 ${r.status}`);
+      }
+      return text ? JSON.parse(text) : [];
+    } catch (err) {
+      if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        throw new Error('网络连接失败，请检查网络或 Supabase URL 是否正确');
+      }
+      throw err;
+    }
   },
-  async post(path, body){
-    const r = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
-      method: 'POST',
-      headers: this.headers({ 'Prefer': 'return=representation' }),
-      body: JSON.stringify(body)
-    });
-    const text = await r.text();
-    if(!r.ok) throw new Error(text || ('POST 失败 ' + r.status));
-    return text ? JSON.parse(text) : [];
-  },
-  async patch(path, body){
-    const r = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
-      method: 'PATCH',
-      headers: this.headers({ 'Prefer': 'return=representation' }),
-      body: JSON.stringify(body)
-    });
-    const text = await r.text();
-    if(!r.ok) throw new Error(text || ('PATCH 失败 ' + r.status));
-    return text ? JSON.parse(text) : [];
-  },
-  async del(path){
-    const r = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
-      method: 'DELETE',
-      headers: this.headers()
-    });
-    if(!r.ok){ const t = await r.text(); throw new Error(t || ('DELETE 失败 ' + r.status)); }
-    return true;
-  }
+  get(path) { return this.request('GET', path); },
+  post(path, body) { return this.request('POST', path, body); },
+  patch(path, body) { return this.request('PATCH', path, body); },
+  del(path) { return this.request('DELETE', path); }
 };
 
 /* =========================================================
@@ -293,6 +277,7 @@ const state = {
   const configured = SUPABASE_URL && SUPABASE_ANON_KEY &&
     !SUPABASE_URL.includes('你的URL') && !SUPABASE_ANON_KEY.includes('你的KEY') &&
     SUPABASE_URL.startsWith('http');
+    
   if(!configured){
     $('configPage').classList.remove('hidden');
     return;
@@ -373,9 +358,13 @@ async function enterApp(){
   $('headerUser').textContent = state.user;
   $('myAvatar').textContent = state.user.slice(0, 1);
   $('myAvatar').style.background = colorOf(state.user);
-  await loadPosts();
-  renderFeed();
-  startPolling();
+  try {
+    await loadPosts();
+    renderFeed();
+    startPolling();
+  } catch(e) {
+    $('feed').innerHTML = `<div class="empty"><p>加载失败</p><span>${e.message}</span></div>`;
+  }
 }
 
 $('logoutBtn').addEventListener('click', () => {
@@ -417,7 +406,6 @@ let pollTimer = null;
 function startPolling(){
   stopPolling();
   pollTimer = setInterval(async () => {
-    // 用户正在输入评论时不打断
     const active = document.activeElement;
     if(active && active.classList.contains('c-input')) return;
     if(state.busy) return;
@@ -649,7 +637,6 @@ async function submitComment(id, postEl){
     p.comments = comments;
     state.openComments.add(id);
     renderFeed();
-    // 重新聚焦新输入框
     const newBox = document.querySelector(`.post[data-id="${id}"] .c-input`);
     if(newBox) newBox.focus();
   }catch(err){ toast('评论失败：' + err.message); }
